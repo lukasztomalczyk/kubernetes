@@ -19,7 +19,7 @@ kind: StatefulSet
 metadata:
   name: rabbitmq-service
 spec:
-  serviceName: "rabbitmq-service"
+  serviceName: rabbitmq-service
   replicas: 1
   template:
     metadata:
