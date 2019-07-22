@@ -27,18 +27,18 @@ spec:
           values:
           - develop-server
 ---
-#kind: PersistentVolumeClaim
-#apiVersion: v1
-#metadata:
-#  name: mongo-local-claim
-#spec:
-#  accessModes:
-#  - ReadWriteOnce
-#  storageClassName: local-storage
-#  resources:
-#    requests:
-#      storage: 1Gi
-#---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mongo-local-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -80,7 +80,7 @@ spec:
           ports:
             - containerPort: 27017
           volumeMounts:
-            - name: mongo-persistent-storage
+            - name: mongo-local-claim
               mountPath: /data/db
         - name: mongo-sidecar
           image: cvallance/mongo-k8s-sidecar:latest
@@ -91,7 +91,7 @@ spec:
               value: 'true'
   volumeClaimTemplates:
   - metadata:
-      name: mongo-persistent-storage
+      name: mongo-local-claim
     spec:
       accessModes:
       - ReadWriteOnce
