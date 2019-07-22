@@ -11,3 +11,5 @@ spec:
     imagePullPolicy: IfNotPresent
     name: busybox
   restartPolicy: Always
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
