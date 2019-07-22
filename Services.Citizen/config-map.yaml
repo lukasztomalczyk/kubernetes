@@ -24,7 +24,7 @@ data:
         "ping": 5000
       },
       "rabbitmq": {
-        "host": "rabbitmq-service-0",
+        "host": "10.1.1.15",
         "virtual": "/",
         "port": 5672,
         "login": "guest",
