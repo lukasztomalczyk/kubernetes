@@ -8,7 +8,7 @@ spec:
   ports:
   - port: 5201
     targetPort: 5201
-  clusterIP: None
+  #clusterIP: None
   selector:
     role: services.citizen
 ---
