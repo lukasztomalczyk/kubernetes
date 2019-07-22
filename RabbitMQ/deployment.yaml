@@ -12,7 +12,7 @@ spec:
   - port: 5672
     targetPort: 5672
     name: managment
-  clusterIP: None
+#clusterIP: None
   selector:
     role: rabbitmq.service
 ---
