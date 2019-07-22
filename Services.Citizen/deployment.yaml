@@ -4,7 +4,6 @@ metadata:
   name: service-citizen
   labels:
     name: service-citizen
-  namespaces: citizen-budget
 spec:
   ports:
   - port: 5201
@@ -17,7 +16,6 @@ apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: service-citizen
-  namespaces: citizen-budget
 spec:
   serviceName: "service-citizen"
   replicas: 1
