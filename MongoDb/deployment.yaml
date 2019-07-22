@@ -27,17 +27,17 @@ spec:
           values:
           - my-node
 ---
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: mongo-local-claim
-spec:
-  accessModes:
-  - ReadWriteOnce
-  storageClassName: local-storage
-  resources:
-    requests:
-      storage: 1Gi
+#kind: PersistentVolumeClaim
+#apiVersion: v1
+#metadata:
+#  name: mongo-local-claim
+#spec:
+#  accessModes:
+#  - ReadWriteOnce
+#  storageClassName: local-storage
+#  resources:
+#    requests:
+#      storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
@@ -89,3 +89,13 @@ spec:
               value: "role=mongo,environment=prod"
             - name: MONGO_SSL_ENABLED
               value: 'true'
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-persistent-storage
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: local-storage
+      resources:
+        requests:
+          storage: 1Gi
