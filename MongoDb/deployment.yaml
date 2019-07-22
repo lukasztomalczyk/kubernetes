@@ -18,6 +18,26 @@ spec:
   storageClassName: local-storage
   local:
     path: /mnt/data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - my-node
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mongo-local-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
