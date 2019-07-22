@@ -25,7 +25,7 @@ spec:
         role: services.citizen
     spec:
       containers:
-        - name: citizenbudget.services.citizen
+        - name: citizenbudget-services-citizen
           image: lukasztomalczyk/citizenbudget.services.citizen
           env:
           - name: ASPNETCORE_ENVIRONMENT
