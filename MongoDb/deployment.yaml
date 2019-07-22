@@ -11,7 +11,7 @@ metadata:
   name: mongo-persistent-storage
 spec:
   capacity:
-    storage: 5Gi
+    storage: 1Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -26,18 +26,18 @@ spec:
           operator: In
           values:
           - develop-server
-#---
-#kind: PersistentVolumeClaim
-#apiVersion: v1
-#metadata:
-#  name: mongo-local-claim
-#spec:
-#  accessModes:
-#  - ReadWriteOnce
-#  storageClassName: local-storage
-#  resources:
-#    requests:
-#      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mongo-local-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
@@ -60,7 +60,7 @@ metadata:
   name: mongo
 spec:
   serviceName: "mongo"
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -89,13 +89,13 @@ spec:
               value: "role=mongo,environment=prod"
             - name: MONGO_SSL_ENABLED
               value: 'true'
-  volumeClaimTemplates:
-  - metadata:
-      name: mongo-local-claim
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      storageClassName: local-storage
-      resources:
-        requests:
-          storage: 1Gi
+#  volumeClaimTemplates:
+#  - metadata:
+#      name: mongo-local-claim
+#    spec:
+#      accessModes:
+#      - ReadWriteOnce
+#      storageClassName: local-storage
+#      resources:
+#        requests:
+#          storage: 1Gi
