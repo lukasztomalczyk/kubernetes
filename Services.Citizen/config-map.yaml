@@ -24,7 +24,7 @@ data:
         "ping": 5000
       },
       "rabbitmq": {
-        "host": "10.1.1.15",
+        "host": "rabbitmq-service-0.citizen-budget.svc.cluster.local",
         "virtual": "/",
         "port": 5672,
         "login": "guest",
