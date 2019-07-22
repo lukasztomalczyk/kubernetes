@@ -3,43 +3,44 @@ kind: ConfigMap
 metadata:
   name: testing-settings
   namespace: citizen-budget
-data: |-
-  {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Debug",
-      "System": "Information",
-      "Microsoft": "Information"
+data: 
+  appsettings.Production.json: |-
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Debug",
+          "System": "Information",
+          "Microsoft": "Information"
+        }
+      },
+      "host": {
+        "port": 5201,
+        "server": "localhost"
+      },
+      "mongo": {
+        "server": "mongo.citizen-budget",
+        "database": "citizen",
+        "port": 27017,
+        "ping": 5000
+      },
+      "rabbitmq": {
+        "host": "172.17.212.250",
+        "virtual": "/",
+        "port": 5672,
+        "login": "guest",
+        "pass": "guest",
+        "exchange": "citizen-exchange",
+        "service": "services-citizen"
+      },
+      "eventstore": {
+        "host": "172.17.212.250",
+        "user": "admin",
+        "pass": "changeit",
+        "port": 1113
+      },
+      "consul": {
+        "address": "/api/citizen/",
+        "name": "services-citizen",
+        "port": 5000
+      }
     }
-  },
-  "host": {
-    "port": 5201,
-    "server": "localhost"
-  },
-  "mongo": {
-    "server": "mongo.citizen-budget",
-    "database": "citizen",
-    "port": 27017,
-    "ping": 5000
-  },
-  "rabbitmq": {
-    "host": "172.17.212.250",
-    "virtual": "/",
-    "port": 5672,
-    "login": "guest",
-    "pass": "guest",
-    "exchange": "citizen-exchange",
-    "service": "services-citizen"
-  },
-  "eventstore": {
-    "host": "172.17.212.250",
-    "user": "admin",
-    "pass": "changeit",
-    "port": 1113
-  },
-  "consul": {
-    "address": "/api/citizen/",
-    "name": "services-citizen",
-    "port": 5000
-  }
-}
