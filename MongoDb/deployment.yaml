@@ -76,7 +76,7 @@ spec:
             - "--replSet"
             - rs0
             - "--smallfiles"
-            - "--norealloc"
+            - "--noprealloc"
           ports:
             - containerPort: 27017
           volumeMounts:
