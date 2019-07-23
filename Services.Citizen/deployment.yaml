@@ -29,7 +29,7 @@ spec:
           image: lukasztomalczyk/citizenbudget.services.citizen:1.3
           imagePullPolicy: Always
           command:
-            - dotnet --info
+            - dotnet --version
           ports:
             - containerPort: 80
           env:
