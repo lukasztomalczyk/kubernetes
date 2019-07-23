@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: testing-settings
+  name: citizen-service-settings-env-production
   namespace: citizen-budget
 data: 
   appsettings.Production.json: |-
