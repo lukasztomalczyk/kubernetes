@@ -27,6 +27,7 @@ spec:
       containers:
         - name: citizenbudget-services-citizen
           image: lukasztomalczyk/citizenbudget.services.citizen:1.0
+          imagePullPolicy: Always
           env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Production
