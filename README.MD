@@ -1,0 +1,1 @@
+docker run -p 5201:5201 -e ASPNETCORE_ENVIRONMENT=Work --network=development_citizenbudget -d --rm -e RABBITMQ_HOST=172.19.0.2 -e MONGO_SERVER=172.19.0.3 -e CONSUL_HOST=172.19.0.6 -e EVENTSTORE_HOST=172.19.0.4 lukasztomalczyk/citizenbudget.services.citizen:1.1
