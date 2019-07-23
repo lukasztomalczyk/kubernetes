@@ -14,19 +14,19 @@ data:
         }
       },
       "host": {
-        "port": 5201,
+        "port": "5201",
         "server": "localhost"
       },
       "mongo": {
         "server": "mongo.citizen-budget",
         "database": "citizen",
-        "port": 27017,
-        "ping": 5000
+        "port": "27017",
+        "ping": "5000"
       },
       "rabbitmq": {
         "host": "rabbitmq.citizen-budget",
         "virtual": "/",
-        "port": 5672,
+        "port": "5672",
         "login": "guest",
         "pass": "guest",
         "exchange": "citizen-exchange",
@@ -36,7 +36,7 @@ data:
         "host": "172.17.212.250",
         "user": "admin",
         "pass": "changeit",
-        "port": 1113
+        "port": "1113"
       },
       "consul": {
         "host": "consul.citizen-budget",
