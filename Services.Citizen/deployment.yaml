@@ -33,7 +33,7 @@ spec:
             value: Production
           volumeMounts:
           - name: config
-            mountPath: /app/appsettings.Production.json
+            mountPath: /app
             #subPath: appsettings.Production.json
       volumes:
       - name: config
