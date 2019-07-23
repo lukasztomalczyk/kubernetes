@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul
+  labels:
+    name: consul
+spec:
+  ports:
+  - port: 8500
+    targetPort: 8500
+    name: connect
+  selector:
+    role: consul.service
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: consul-service
+spec:
+  serviceName: consul-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: consul
+    spec:
+      containers:
+        - name: consul
+          image: consul
+          ports:
+            - containerPort: 8500
+              name: connect
