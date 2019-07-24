@@ -17,3 +17,14 @@ spec:
         image: lukasztomalczyk/citizenbudget.services.citizen:1.2
         ports:
         - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Production
+          volumeMounts:
+          - name: config
+            mountPath: /app
+            #subPath: appsettings.Production.json
+      volumes:
+      - name: config
+        configMap:
+          name: citizen-service-settings-env-production
