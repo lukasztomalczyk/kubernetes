@@ -7,7 +7,7 @@ spec:
     - name: citizen-services
       image: lukasztomalczyk/citizenbudget.services.citizen:1.2
       imagePullPolicy: Always
-      command: [ "/usr/share/dotnet/dotnet","--version" ]
+      command: [ "/usr/share/dotnet/dotnet","CitizenBudget.Services.Citizen.dll" ]
       env:
         - name: ASPNETCORE_ENVIRONMENT
           value: Production
