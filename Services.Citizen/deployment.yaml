@@ -25,6 +25,7 @@ spec:
         role: services.citizen
     spec:
       containers:
+        restartPolicy: Never
         - name: citizenbudget-services-citizen
           image: lukasztomalczyk/citizenbudget.services.citizen:1.3
           imagePullPolicy: Always
