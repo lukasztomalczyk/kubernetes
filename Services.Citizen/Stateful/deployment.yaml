@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: citizenbudget-services-citizen
-          image: lukasztomalczyk/citizenbudget.services.citizen:1.2
+          image: lukasztomalczyk/citizenbudget.services.citizen:1.4
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -35,8 +35,8 @@ spec:
             value: Production
           volumeMounts:
           - name: config
-            mountPath: /app
-            #subPath: appsettings.Production.json
+            mountPath: /app/appsettings.Production.json
+            subPath: appsettings.Production.json
       volumes:
       - name: config
         configMap:
