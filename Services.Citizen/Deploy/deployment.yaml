@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: citizen
-        image: lukasztomalczyk/citizenbudget.services.citizen:1.2
+        image: lukasztomalczyk/citizenbudget.services.citizen:1.4
         ports:
         - containerPort: 80
         env:
