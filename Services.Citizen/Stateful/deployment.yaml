@@ -28,6 +28,7 @@ spec:
         - name: citizenbudget-services-citizen
           image: lukasztomalczyk/citizenbudget.services.citizen:1.5
           imagePullPolicy: Always
+          command: [ "cat","appsettings.Production.json" ]
           ports:
             - containerPort: 80
           env:
