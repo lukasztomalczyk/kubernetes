@@ -13,6 +13,7 @@ spec:
       volumeMounts:
       - name: config
         mountPath: /app/appsettings.Production.json
+        subPath: appsettings.Production.json
   volumes:
   - name: config
     configMap:
