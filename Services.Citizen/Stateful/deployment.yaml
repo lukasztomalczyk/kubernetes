@@ -42,3 +42,4 @@ spec:
       - name: config
         configMap:
           name: citizen-service-settings-env-production
+      restartPolicy: Never
