@@ -10,12 +10,4 @@ spec:
       env:
         - name: ASPNETCORE_ENVIRONMENT
           value: Production
-      volumeMounts:
-      - name: config
-        mountPath: /app/appsettings.Production.json
-        subPath: appsettings.Production.json
-  volumes:
-  - name: config
-    configMap:
-      name: citizen-service-settings-env-production
   restartPolicy: Never
