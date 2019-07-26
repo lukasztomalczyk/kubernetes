@@ -10,4 +10,6 @@ spec:
       env:
         - name: ASPNETCORE_ENVIRONMENT
           value: Production
+        - name: ASPNETCORE_URL
+          value: develop-server
   restartPolicy: Never
