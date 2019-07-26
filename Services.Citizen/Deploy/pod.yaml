@@ -9,7 +9,7 @@ spec:
       imagePullPolicy: Always
       env:
         - name: ASPNETCORE_ENVIRONMENT
-          value: Production
+          value: Productionn
         - name: ASPNETCORE_URL
           value: develop-server
   restartPolicy: Never
