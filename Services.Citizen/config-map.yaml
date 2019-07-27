@@ -4,7 +4,7 @@ metadata:
   name: citizen-service-settings-env-production
   namespace: citizen-budget
 data: 
-  appsettings.Production.json: |
+  appsettings.Production.json: |-
     {
       "Logging": {
         "LogLevel": {
