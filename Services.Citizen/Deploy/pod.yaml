@@ -5,11 +5,11 @@ metadata:
 spec:
   containers:
     - name: citizen-services
-      image: lukasztomalczyk/citizenbudget.services.citizen:1.5
+      image: lukasztomalczyk/citizenbudget.services.citizen:1.2
       imagePullPolicy: Always
       env:
         - name: ASPNETCORE_ENVIRONMENT
-          value: Development
+          value: Production
 #        - name: ASPNETCORE_URL
 #          value: develop-server
   restartPolicy: Never
