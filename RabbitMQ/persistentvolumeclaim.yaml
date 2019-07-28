@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: rabbitmq.service.volume.claim
 spec:
-  volumeName: example-pv
+  volumeName: rabbitmq.persistent.volume
   storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
