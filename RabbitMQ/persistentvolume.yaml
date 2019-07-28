@@ -9,6 +9,8 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
+  securityContext:
+    fsGroup: 0
   persistentVolumeReclaimPolicy: Delete
   storageClassName: local-storage
   local:
