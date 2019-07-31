@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: citizen-gatewayapi-settings-env-production
+  namespace: citizen-budget
+data: 
+  ocelot.Production.json: |-
+    {
+      "ReRoutes": [
+        {
+          "DownstreamPathTemplate": "/{catchAll}",
+          "DownstreamScheme": "ws",
+          "DownstreamHostAndPorts": [
+            {
+              "Host": "localhost",
+              "Port": 5202
+            }
+          ],
+          "UpstreamPathTemplate": "/notifications/{catchAll}",
+          "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+        },
+        {
+          "DownstreamPathTemplate": "/api/citizen/createcitizen/",
+          "DownstreamScheme": "http",
+          "DownstreamHostAndPorts": [
+            {
+              "Host": "service-citizen.citizen-budget",
+              "Port": 5201
+            }
+          ],
+          "UpstreamPathTemplate": "/api/citizen/createcitizen/",
+          "UpstreamHttpMethod": [ "Post", "OPTIONS" ]
+        },
+        {
+          "DownstreamPathTemplate": "/api/citizen/changetitle/",
+          "DownstreamScheme": "http",
+          "DownstreamHostAndPorts": [
+            {
+              "Host": "localhost",
+              "Port": 5201
+            }
+          ],
+          "UpstreamPathTemplate": "/api/citizen/changetitle/",
+          "UpstreamHttpMethod": [ "Post", "OPTIONS" ],      
+          "AuthenticationOptions": {
+            "AuthenticationProviderKey": "dsffffffffffsdfdsfnuewfu34ufu34f34fbyb4yfb4y3fb3b4ybf3ybyfb3yf",
+            "AllowedScopes": []
+          }
+        },
+        {
+          "DownstreamPathTemplate": "/api/citizen/get/{everything}",
+          "DownstreamScheme": "http",
+          "DownstreamHostAndPorts": [
+            {
+              "Host": "localhost",
+              "Port": 5201
+            }
+          ],
+          "UpstreamPathTemplate": "/api/citizen/get/{everything}",
+          "UpstreamHttpMethod": [ "Get" ],
+          "AuthenticationOptions": {
+            "AuthenticationProviderKey": "dsffffffffffsdfdsfnuewfu34ufu34f34fbyb4yfb4y3fb3b4ybf3ybyfb3yf",
+            "AllowedScopes": []
+          }
+        },
+        {
+          "DownstreamPathTemplate": "/api/citizen/pagination/{everything}",
+          "DownstreamScheme": "http",
+          "DownstreamHostAndPorts": [
+            {
+              "Host": "localhost",
+              "Port": 5201
+            }
+          ],
+          "UpstreamPathTemplate": "/api/citizen/pagination/{everything}",
+          "UpstreamHttpMethod": [ "Get" ],
+          "AuthenticationOptions": {
+            "AuthenticationProviderKey": "dsffffffffffsdfdsfnuewfu34ufu34f34fbyb4yfb4y3fb3b4ybf3ybyfb3yf",
+            "AllowedScopes": []
+          }
+        }
+      ]
+    }
