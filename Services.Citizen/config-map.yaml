@@ -24,7 +24,7 @@ data:
         "ping": "5000"
       },
       "rabbitmq": {
-        "host": "rabbitmq.citizen-budget",
+        "host": "rabbitmqhelm-headless.citizen-budget",
         "virtual": "/",
         "port": "5672",
         "login": "guest",
