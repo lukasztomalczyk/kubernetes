@@ -6,7 +6,7 @@ metadata:
     name: gatewayapi
     environment: production
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - nodePort: 31201
     name: external
