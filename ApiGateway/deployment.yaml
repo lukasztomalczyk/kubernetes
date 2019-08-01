@@ -10,8 +10,7 @@ spec:
   - port: 5201
     targetPort: 80
     protocol: TCP
-  type: LoadBalancer
-  #clusterIP: None
+    nodePort: 31201
   selector:
     role: gatewayapi
 ---
