@@ -4,10 +4,13 @@ metadata:
   name: gatewayapi
   labels:
     name: gatewayapi
+    environment: production
 spec:
   ports:
   - port: 5201
     targetPort: 80
+    protocol: TCP
+  type: LoadBalancer
   #clusterIP: None
   selector:
     role: gatewayapi
