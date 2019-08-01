@@ -21,3 +21,18 @@ data:
         }
       ]
     }
+  appsettings.Production.json: |-
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "TRACE"
+        }
+      },
+      "host": {
+        "port": "80",
+        "server": "localhost"
+      },
+      "sekretkey": {
+        "key": "dsffffffffffsdfdsfnuewfu34ufu34f34fbyb4yfb4y3fb3b4ybf3ybyfb3yf"
+      }
+    }
