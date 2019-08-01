@@ -1,32 +1,32 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-citizen
+  name: citizenbudget.gatewayapi
   labels:
-    name: service-citizen
+    name: citizenbudget.gatewayapi
 spec:
   ports:
   - port: 5201
     targetPort: 80
   #clusterIP: None
   selector:
-    role: services.citizen
+    role: citizenbudget.gatewayapi
 ---
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: service-citizen
 spec:
-  serviceName: "service-citizen"
+  serviceName: citizenbudget.gatewayapi
   replicas: 1
   template:
     metadata:
       labels:
-        role: services.citizen
+        role: citizenbudget.gatewayapi
     spec:
       containers:
-        - name: citizenbudget-services-citizen
-          image: lukasztomalczyk/citizenbudget.services.citizen:1.2
+        - name: citizenbudget.gatewayapi
+          image: lukasztomalczyk/citizenbudget.gatewayapi:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80
