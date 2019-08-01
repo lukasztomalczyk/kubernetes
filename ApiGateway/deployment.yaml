@@ -1,28 +1,28 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: citizenbudget-gatewayapi
+  name: gatewayapi
   labels:
-    name: citizenbudget-gatewayapi
+    name: gatewayapi
 spec:
   ports:
   - port: 5201
     targetPort: 80
   #clusterIP: None
   selector:
-    role: citizenbudget-gatewayapi
+    role: gatewayapi
 ---
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: service-citizen
 spec:
-  serviceName: "citizenbudget-gatewayapi"
+  serviceName: "gatewayapi"
   replicas: 1
   template:
     metadata:
       labels:
-        role: citizenbudget-gatewayapi
+        role: gatewayapi
     spec:
       containers:
         - name: citizenbudget-gatewayapi
