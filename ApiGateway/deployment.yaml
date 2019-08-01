@@ -13,10 +13,6 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 80
-  - port: 5201
-    name: internal
-    targetPort: 80
-    protocol: TCP
   selector:
     role: gatewayapi
 ---

@@ -2,7 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: citizen-gatewayapi-settings-env-production
-  namespace: citizen-budget
+  labels:
+    name: gatewayapi
+    environment: production
+    data: ocelot.production.json, appsettings.production.json
 data: 
   ocelot.Production.json: |-
     {
