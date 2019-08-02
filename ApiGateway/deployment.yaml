@@ -33,10 +33,13 @@ spec:
         - name: citizenbudget-gatewayapi
           image: lukasztomalczyk/citizenbudget.gatewayapi:1.0
           imagePullPolicy: Always
-          command: |
-            #!/bin/sh
-            IP=\$(curl --silent --show-error --fail "\${URL}")
-            echo "\${IP}"
+          command:
+            - bash
+            - -ec
+            - |
+              #!/bin/sh
+              IP=\$(curl --silent --show-error --fail "\${URL}")
+              echo "\${IP}"
           ports:
             - containerPort: 80
           env:
