@@ -34,8 +34,6 @@ spec:
           image: lukasztomalczyk/citizenbudget.gatewayapi:1.0
           imagePullPolicy: Always
           command:
-            - bash
-            - -ec
             - |
               #!/bin/sh
               IP=\$(hostname -i)
