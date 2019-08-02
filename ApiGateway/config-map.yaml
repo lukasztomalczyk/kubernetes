@@ -5,7 +5,7 @@ metadata:
   labels:
     name: gatewayapi
     environment: production
-    data: ocelot.production.json, appsettings.production.json
+    data: json-file
 data: 
   ocelot.Production.json: |-
     {

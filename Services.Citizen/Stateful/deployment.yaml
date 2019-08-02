@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: citizenbudget-services-citizen
-          image: lukasztomalczyk/citizenbudget.services.citizen:1.2
+          image: lukasztomalczyk/citizenbudget.services.citizen:1.5
           imagePullPolicy: Always
 #          command: [ "ls","&&","cat","appsettings.Production.json" ]
           ports:
