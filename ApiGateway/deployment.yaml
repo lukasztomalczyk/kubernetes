@@ -33,7 +33,9 @@ spec:
         - name: citizenbudget-gatewayapi
           image: lukasztomalczyk/citizenbudget.gatewayapi:1.0
           imagePullPolicy: Always
-          command: [ "IP=$(hostname -i)" ] 
+          command:
+           - bash
+           - IP=$(hostname -i) 
           ports:
             - containerPort: 80
           env:
