@@ -38,7 +38,7 @@ spec:
             - -ec
             - |
               #!/bin/sh
-              IP=\$(curl --silent --show-error --fail "\${URL}")
+              IP=\$(hostname -i)
               echo "\${IP}"
           ports:
             - containerPort: 80
