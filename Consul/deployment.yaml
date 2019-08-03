@@ -5,10 +5,15 @@ metadata:
   labels:
     name: consul
 spec:
-  ports:
+  type: NodePort
+  - nodePort: 31250
+    name: external
+    port: 8500
+    protocol: TCP
+    targetPort: 8500
   - port: 8500
     targetPort: 8500
-    name: connect
+    name: container
   selector:
     role: consul.service
 ---
