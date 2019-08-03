@@ -28,7 +28,8 @@ spec:
         - name: citizenbudget-services-citizen
           image: lukasztomalczyk/citizenbudget.services.citizen:1.5
           imagePullPolicy: Always
-#          command: [ "ls","&&","cat","appsettings.Production.json" ]
+          command: ["/bin/sh", "-c"]
+          args: ["IP_HOST=$(hostname -i)"]
           ports:
             - containerPort: 80
           env:
