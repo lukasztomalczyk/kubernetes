@@ -28,6 +28,7 @@ spec:
         - name: consul
           image: consul
           command:
+            - mkdir /consul/data
             - consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul/data
           ports:
             - containerPort: 8500
