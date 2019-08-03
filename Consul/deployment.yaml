@@ -27,6 +27,15 @@ spec:
       containers:
         - name: consul
           image: consul
+          command:
+            - consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul/data
           ports:
             - containerPort: 8500
               name: connect
+          volumeMounts:
+            - name: consul-storage
+              mountPath: /consul/
+      volumes:
+        - name: consul-storage
+          persistentVolumeClaim:
+            claimName: consul.service.volume.claim
