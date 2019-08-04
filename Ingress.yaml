@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  backend:
+    serviceName: other
+    servicePort: 31250
+  rules:
+  - host: consul.service.com
+    http:
+      paths:
+      - backend:
+          serviceName: consul
+          servicePort: 31250
