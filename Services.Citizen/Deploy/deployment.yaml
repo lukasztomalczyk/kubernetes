@@ -14,17 +14,13 @@ spec:
     spec:
       containers:
       - name: citizen
-        image: lukasztomalczyk/citizenbudget.services.citizen:1.4
+        image: lukasztomalczyk/citizenbudget.services.citizen:1.5
         ports:
         - containerPort: 80
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Production
-          volumeMounts:
-          - name: config
-            mountPath: /app/appsettings.Production.json
-            subPath: appsettings.Production.json
-      volumes:
-      - name: config
-        configMap:
-          name: citizen-service-settings-env-production
+          - name: CONSUL_HOST
+            value: consul-service
+          - name: CONSUL_PORT
+            value: 8500
