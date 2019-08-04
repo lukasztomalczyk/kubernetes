@@ -1,0 +1,28 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: consul
+spec:
+  selector:
+    matchLabels:
+      app: consul
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: consul
+    spec:
+      containers:
+      - name: consul
+        image: consul
+        command: ["/bin/sh", "-c"]
+        args: ["consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul"]
+        ports:
+        - containerPort: 8500
+        volumeMounts:
+            - name: consul-storage
+              mountPath: /consul/
+      volumes:
+        - name: consul-storage
+          persistentVolumeClaim:
+            claimName: consul.service.volume.claim
