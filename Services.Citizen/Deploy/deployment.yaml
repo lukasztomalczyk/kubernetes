@@ -12,6 +12,8 @@ spec:
       labels:
         app: citizen.services
     spec:
+      dnsPolicy: Default
+      imagePullPolicy: Always
       containers:
       - name: citizen
         image: lukasztomalczyk/citizenbudget.services.citizen:1.5
