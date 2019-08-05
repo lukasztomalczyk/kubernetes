@@ -5,7 +5,6 @@ metadata:
   labels:
     name: consul-service
 spec:
-  externalTrafficPolicy: Cluster
   ports:
   - port: 31111
     name: external
