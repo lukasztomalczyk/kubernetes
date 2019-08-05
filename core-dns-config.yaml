@@ -6,10 +6,21 @@ metadata:
 data:
   Corefile: |
     .:53 {
-        log stdout
+        errors
         health
-        # Replace cluster.local with your cluster domain
-        kubernetes cluster.local svc.cluster.local
-        proxy . /etc/resolv.conf
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+        }
+        prometheus :9153
+        forward . 172.16.0.1
         cache 30
+        loop
+        reload
+        loadbalance
+    }
+    test-container-2-expose.citizen-budget:53 {
+        errors
+        cache 30
+        forward . 10.152.183.125
     }
