@@ -4,7 +4,7 @@ metadata:
   name: test-ingress
 spec:
   rules:
-  - host: consul.com
+  - host: consul.service.develop-server.com
   backend:
     serviceName: consul
     servicePort: 8500

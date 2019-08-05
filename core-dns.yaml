@@ -9,7 +9,7 @@ data:
         log stdout
         health
         # Replace cluster.local with your cluster domain
-        kubernetes cluster.local
+        kubernetes cluster.local svc.cluster.local
         proxy . /etc/resolv.conf
         cache 30
     }
