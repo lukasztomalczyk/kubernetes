@@ -16,6 +16,7 @@ spec:
       containers:
         - name: test-container-2
           image: lukasztomalczyk/test-container:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
               name: connect
