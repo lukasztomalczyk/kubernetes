@@ -17,24 +17,11 @@ spec:
       containers:
         - name: mongo
           image: mongo
-          command:
-            - mongod
-            - "--replSet"
-            - rs0
-            - "--smallfiles"
-            - "--noprealloc"
           ports:
             - containerPort: 27017
           volumeMounts:
             - name: mongo-storage
               mountPath: /data/db
-        - name: mongo-sidecar
-          image: cvallance/mongo-k8s-sidecar:latest
-          env:
-            - name: MONGO_SIDECAR_POD_LABELS
-              value: "role=mongo,environment=prod"
-            - name: MONGO_SSL_ENABLED
-              value: 'true'
       volumes:
         - name: mongo-storage
           persistentVolumeClaim:
