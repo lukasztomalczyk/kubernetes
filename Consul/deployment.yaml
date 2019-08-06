@@ -1,48 +1,65 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
 metadata:
-  name: consul-service
-  labels:
-    name: consul-service
+  name: consul
 spec:
-  externalTrafficPolicy: Cluster
-  type: NodePort
-  ports:
-  - nodePort: 31250
-    name: external
-    port: 8500
-    protocol: TCP
-    targetPort: 8500
-  - port: 8500
-    targetPort: 8500
-    name: container
   selector:
-    role: consul.service
----
-apiVersion: apps/v1beta1
-kind: StatefulSet
-metadata:
-  name: consul-service
-spec:
-  serviceName: consul-service
-  replicas: 1
+    matchLabels:
+      app: consul
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        role: consul-service
+        app: consul
     spec:
       containers:
-        - name: consul
-          image: consul
-          command: ["/bin/sh", "-c"]
-          args: ["consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul"]
-          ports:
-            - containerPort: 8500
-              name: connect
-          volumeMounts:
+      - name: consul
+        image: consul
+        command: ["/bin/sh", "-c"]
+        args: ["consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul"]
+        ports:
+        - containerPort: 8500
+        volumeMounts:
             - name: consul-storage
               mountPath: /consul/
       volumes:
         - name: consul-storage
           persistentVolumeClaim:
             claimName: consul.service.volume.claim
+# kubectl expose deployment consul --type=NodePort --name=consul-service --namespace=citizen-budget
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: consul.persistent.volume
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /mnt/data/consul
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - develop-server
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: consul.service.volume.claim
+spec:
+  volumeName: consul.persistent.volume
+  storageClassName: local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

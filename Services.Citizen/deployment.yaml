@@ -26,3 +26,20 @@ spec:
             value: "10.152.183.81"
           - name: CONSUL_PORT
             value: "8500"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: citizen-service-settings-env-production
+  namespace: citizen-budget
+data: 
+  appsettings.Production.json: |-
+    {
+      "consul": {
+        "host": "10.152.183.81",
+        "address": "/api/citizen/",
+        "name": "services-citizen",
+        "port": "8500",
+        "serviceport": "5201"
+      }
+    }
