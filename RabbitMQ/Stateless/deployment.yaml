@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbit-deployment
+spec:
+  selector:
+    matchLabels:
+      app: rabbit-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rabbit-deployment
+    spec:
+      dnsPolicy: Default
+      containers:
+      - name: rabbit
+        image: rabbitmq:management-alpine
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 15672
+          name: ui
+        - containerPort: 5672
+          name: connect
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rabbitmq.persistent.volume
+spec:
+  capacity:
+    storage: 1Gi
+  # volumeMode field requires BlockVolume Alpha feature gate to be enabled.
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /mnt/data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - develop-server
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: rabbitmq.service.volume.claim
+spec:
+  volumeName: rabbitmq.persistent.volume
+  storageClassName: local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
