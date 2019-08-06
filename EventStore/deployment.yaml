@@ -27,7 +27,7 @@ spec:
               value: "2112"
           volumeMounts:
             - name: eventstore-storage
-              mountPath: /data/db
+              mountPath: /data/eventstore/db
       volumes:
         - name: eventstore-storage
           persistentVolumeClaim:
@@ -45,7 +45,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/data
+    path: /mnt/data/eventstore
   nodeAffinity:
     required:
       nodeSelectorTerms:

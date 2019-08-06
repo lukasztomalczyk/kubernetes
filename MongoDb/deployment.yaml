@@ -39,7 +39,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/data
+    path: /mnt/data/mongo
   nodeAffinity:
     required:
       nodeSelectorTerms:
