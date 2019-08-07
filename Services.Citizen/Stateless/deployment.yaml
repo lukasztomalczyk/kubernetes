@@ -26,3 +26,10 @@ spec:
             value: "10.152.183.81"
           - name: CONSUL_PORT
             value: "8500"
+        volumeMounts:
+          - name: config
+            mountPath: /app/logs
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: logs-persistent-volume
