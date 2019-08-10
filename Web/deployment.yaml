@@ -18,7 +18,7 @@ spec:
         image: lukasztomalczyk/citizenbudget.web:1.0
         imagePullPolicy: Always
         ports:
-        - containerPort: 4200
+        - containerPort: 80
         env:
           - name: CONSUL_HOST
             value: "10.152.183.81"
