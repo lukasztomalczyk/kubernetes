@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  selector:
+    matchLabels:
+      app: web-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-deployment
+    spec:
+      dnsPolicy: Default
+      containers:
+      - name: web
+        image: lukasztomalczyk/citizenbudget.web:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4200
+        env:
+          - name: CONSUL_HOST
+            value: "10.152.183.81"
+          - name: CONSUL_PORT
+            value: "8500"
+        volumeMounts:
+          - name: config
+            mountPath: /app/logs
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: logs-volume-claim
