@@ -1,0 +1,42 @@
+{
+  "serilog": {
+    "minimumlevel": {
+        "default": "Information"
+    },
+    "podnameenv": "HOSTNAME"
+  },
+  "host": {
+    "port": "5000",
+    "server": "0.0.0.0"
+  },
+  "cors": {
+    "origin": "http://localhost:4200"
+  },
+  "mongo": {
+    "server": "10.152.183.221",
+    "database": "citizen",
+    "port": "27017",
+    "ping": "1000"
+  },
+  "rabbitmq": {
+    "host": "10.152.183.155",
+    "virtual": "/",
+    "port": "5672",
+    "login": "guest",
+    "pass": "guest",
+    "exchange": "citizen-exchange",
+    "service": "services-citizen"
+  },
+  "eventstore": {
+    "host": "10.152.183.219",
+    "user": "admin",
+    "pass": "changeit",
+    "port": "1113"
+  },
+  "consul": {
+    "servicehostenv": "CITIZEN_SERVICES_EXPOSE_SERVICE_HOST",
+    "serviceportenv": "CITIZEN_SERVICES_EXPOSE_SERVICE_PORT",
+    "name": "services-citizen",
+    "uri": "api/heartbeat/status"
+  }
+}

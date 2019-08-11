@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gatewayapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: gatewayapi-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gatewayapi-deployment
+    spec:
+      dnsPolicy: Default
+      containers:
+      - name: gatewayapi
+        image: lukasztomalczyk/citizenbudget.gatewayapi:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+          - name: CONSUL_HOST
+            value: "10.152.183.81"
+          - name: CONSUL_PORT
+            value: "8500"
+        volumeMounts:
+          - name: config
+            mountPath: /app/logs
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: logs-volume-claim
