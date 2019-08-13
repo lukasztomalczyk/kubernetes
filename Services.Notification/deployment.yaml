@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-services-deployment
+spec:
+  selector:
+    matchLabels:
+      app: notification-services
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: notification-services
+    spec:
+      dnsPolicy: Default
+      containers:
+      - name: notification
+        image: lukasztomalczyk/citizenbudget.services.notification:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Production
+          - name: CONSUL_HOST
+            value: "10.152.183.81"
+          - name: CONSUL_PORT
+            value: "8500"
+        volumeMounts:
+          - name: config
+            mountPath: /app/logs
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: logs-volume-claim
