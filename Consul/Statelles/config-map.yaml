@@ -5,11 +5,11 @@ metadata:
   namespace: citizen-budget
 data: 
   config.json: |-  
-   {
+    {
       "http_config": {
         "response_headers": {
           "Access-Control-Allow-Origin": "*",
-	        "Access-Control-Request-Headers": "Access-Control-Allow-Origin"
+          "Access-Control-Request-Headers": "Access-Control-Allow-Origin"
         }
       }
     }
