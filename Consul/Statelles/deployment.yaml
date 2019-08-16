@@ -16,14 +16,20 @@ spec:
       - name: consul
         image: consul
         command: ["/bin/sh", "-c"]
-        args: ["consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul"]
+        args: ["consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul -config-file=/consul/config/config.json"]
         ports:
         - containerPort: 8500
         volumeMounts:
             - name: consul-storage
               mountPath: /consul/
+            - name: config
+              mountPath: /consul/config.json
+              subPath: config.json
       volumes:
         - name: consul-storage
           persistentVolumeClaim:
             claimName: consul.service.volume.claim
+        - name: config
+          configMap:
+            name: consul-config-settings
 # kubectl expose deployment consul --type=NodePort --name=consul-service --namespace=citizen-budget
