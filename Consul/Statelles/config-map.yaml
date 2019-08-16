@@ -9,7 +9,7 @@ data:
       "http_config": {
         "response_headers": {
           "Access-Control-Allow-Origin": "*",
-	  "Access-Control-Request-Headers": "Access-Control-Allow-Origin"
+	        "Access-Control-Request-Headers": "Access-Control-Allow-Origin"
         }
       }
     }
