@@ -6,7 +6,7 @@ metadata:
   annotations:    
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /notifications/notifications
     #nginx.ingress.kubernetes.io/enable-cors: "true"
     kubernetes.io/ingress.allow-http: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
