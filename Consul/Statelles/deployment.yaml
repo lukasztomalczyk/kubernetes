@@ -16,7 +16,7 @@ spec:
       - name: consul
         image: consul
         command: ["/bin/sh", "-c"]
-        args: ["consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul -config-file=/consul/config/config.json"]
+        args: ["consul agent -server -bootstrap -ui -client=0.0.0.0 --data-dir /consul -config-file=/consul/config.json"]
         ports:
         - containerPort: 8500
         volumeMounts:
